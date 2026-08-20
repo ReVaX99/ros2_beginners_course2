@@ -1,0 +1,40 @@
+- ros_topic_name: "/clock" # The name we choose for ROS
+  gz_topic_name: "/clock" #Coming from gazebo
+  ros_type_name: "rosgraph_msgs/msg/Clock" # Transport type found in the table from the repository ros_gz/ros_gz_bridge
+  gz_type_name: "gz.msgs.Clock" # Type introspected from GZ using gz topic -i -t /clock 
+  direction: GZ_TO_ROS # Topic to be brought from GZ to ROS
+
+# This one is for matching the joint states topics from GZ to ROS2, so that ROS2 can use it
+- ros_topic_name: "/joint_states"
+  gz_topic_name: "/world/empty/model/my_robot/joint_state"
+  ros_type_name: "sensor_msgs/msg/JointState"
+  gz_type_name: "gz.msgs.Model"
+  direction: GZ_TO_ROS
+
+# This one is for sending the TFs from GZ to ROS
+- ros_topic_name: "/tf"
+  gz_topic_name: "/model/my_robot/tf"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "gz.msgs.Pose_V"
+  direction: GZ_TO_ROS
+
+# Aqui es para que el publisher en ROS2 obtenga la info del subscriber en GZ
+- ros_topic_name: "/cmd_vel"
+  gz_topic_name: "/model/my_robot/cmd_vel"
+  ros_type_name: "geometry_msgs/msg/Twist"
+  gz_type_name: "gz.msgs.Twist"
+  direction: ROS_TO_GZ
+
+  # Aqui es para la camara info de GZ a ROS
+- ros_topic_name: "/camera/camera_info"
+  gz_topic_name: "/camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+# Aqui es para el image raw de GZ a ROS
+- ros_topic_name: "/camera/image_raw"
+  gz_topic_name: "/camera/image_raw"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS

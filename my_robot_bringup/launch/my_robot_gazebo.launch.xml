@@ -1,0 +1,36 @@
+<launch>
+
+    <let name="urdf_path" 
+         value="$(find-pkg-share my_robot_description)/urdf/my_robot.urdf.xacro" />
+
+    <let name="gazebo_config_path"
+         value="$(find-pkg-share my_robot_bringup)/config/gazebo_bridge.yaml" />
+    
+    <let name="rviz_config_path"
+         value="$(find-pkg-share my_robot_description)/rviz/urdf_config.rviz" />
+
+    <node pkg="robot_state_publisher" exec="robot_state_publisher">
+        <param name="robot_description" 
+               value="$(command 'xacro $(var urdf_path)')" />
+    </node> <!-- We start this node to publish the robot state -->
+
+    <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
+        <!--<arg name="gz_args" value="empty.sdf -r" /> -->
+        <arg name="gz_args" value="$(find-pkg-share my_robot_bringup)/worlds/test_world.sdf -r" />
+    </include> <!-- We start gazebo with this declaration -->
+
+    <node pkg="ros_gz_sim" exec="create" output="screen" args="-topic robot_description" />
+    <!-- We spawn the robot in gazebo with this command -->
+
+    <node pkg="ros_gz_bridge" exec="parameter_bridge">
+        <param name="config_file" value="$(var gazebo_config_path)" />
+    </node>
+    <!-- We add the mapping between GZ and ROS2 to make the whole application work and 
+    share the information they need -->
+
+
+    <node pkg="rviz2" exec="rviz2" output="screen" 
+        args="-d $(var rviz_config_path)" />
+    <!-- We start rviz to visualize the robot there also -->
+
+</launch>
