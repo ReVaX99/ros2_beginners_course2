@@ -1,5 +1,5 @@
 # ROS 2 for Beginners: Course 2
-Course to learn about TFs, URDFs, RViz and Gazebo within the ROS 2 framework.
+ROS 2 course to learn about TFs, URDFs, RViz and Gazebo with practical examples.
 
 The content of the course is based on the ROS 2 for Beginners Level 2 - TF | URDF | RViz | Gazebo course on Udemy from Edouard Renard. [Link to the course](https://www.udemy.com/course/ros2-tf-urdf-rviz-gazebo/?couponCode=CP260817G2)
 
