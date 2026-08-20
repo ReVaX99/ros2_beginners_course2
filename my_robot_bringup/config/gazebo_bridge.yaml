@@ -38,3 +38,17 @@
   ros_type_name: "sensor_msgs/msg/Image"
   gz_type_name: "gz.msgs.Image"
   direction: GZ_TO_ROS
+
+  # This one is to bridge the position controller of the arm_base_forearm joint
+- ros_topic_name: "/arm_base_forearm/cmd_pos"
+  gz_topic_name: "/model/my_robot/joint/arm_base_forearm_joint/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: ROS_TO_GZ
+
+  # This one is to bridge the position controller of the forearm_hand joint
+- ros_topic_name: "/forearm_hand_joint/cmd_pos"
+  gz_topic_name: "/model/my_robot/joint/forearm_hand_joint/0/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: ROS_TO_GZ

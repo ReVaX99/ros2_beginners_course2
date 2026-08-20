@@ -1,18 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <material name="blue">
-        <color rgba="0 0 0.5 1" />
-    </material>
-
-    <material name="grey">
-        <color rgba="0.5 0.5 0.5 1" />
-    </material>
-
-    <material name="red">
-        <color rgba="0.8 0 0 1" />
-    </material>
-
     <material name="yellow">
         <color rgba="1 1 0 1" />
     </material>
@@ -41,13 +29,5 @@
         </inertial>
     </xacro:macro>
 
-    <xacro:macro name="sphere_inertia" params="m r"> <!--The inertia formula of a solid sphere is used in this case, instead of a hollow sphere-->
-        <inertial>
-            <mass value="${m}" />
-            <inertia ixx="${(2*m/5) * (r*r)}" ixy="0" ixz="0"
-                     iyy="${(2*m/5) * (r*r)}" iyz="0"
-                     izz="${(2*m/5) * (r*r)}" />
-        </inertial>
-    </xacro:macro>
 
 </robot>
