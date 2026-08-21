@@ -27,7 +27,7 @@
         </collision>
 
         <xacro:box_inertia m="0.5" x="${base_length}" y="${base_width}" z="${base_height}"
-                            o_xyz="0 0 0" o_rpy="0 0 0" />
+                            o_xyz="0 0 ${base_height / 2.0}" o_rpy="0 0 0" />
 
     </link>
 
