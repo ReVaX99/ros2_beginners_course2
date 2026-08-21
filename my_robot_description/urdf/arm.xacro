@@ -23,7 +23,7 @@
             <geometry>
                 <box size="${base_length} ${base_width} ${base_height}" />
             </geometry>
-            <origin xyz="0 0 0" rpy="0 0 0" />
+            <origin xyz="0 0 ${base_height / 2.0}" rpy="0 0 0" />
         </collision>
 
         <xacro:box_inertia m="0.5" x="${base_length}" y="${base_width}" z="${base_height}"
@@ -64,12 +64,7 @@
 
         <axis xyz="0 1 0" />
 
-        <limit
-            lower="0"
-            upper="${pi/2.0}"
-            effort="100"
-            velocity="100" 
-        />
+        <limit lower="0" upper="${pi/2.0}" effort="100" velocity="100" />
 
         <dynamics friction="0.3" damping="0.3" />
 
@@ -83,12 +78,7 @@
 
         <axis xyz="0 1 0" />
 
-        <limit
-            lower="0"
-            upper="${pi/2.0}"
-            effort="100"
-            velocity="100" 
-        />
+        <limit lower="0" upper="${pi/2.0}" effort="100" velocity="100" />
 
         <dynamics friction="0.3" damping="0.3" />
 
