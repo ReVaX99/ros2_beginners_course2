@@ -66,7 +66,7 @@
 
         <limit lower="0" upper="${pi/2.0}" effort="100" velocity="100" />
 
-        <dynamics friction="0.3" damping="0.3" />
+        <dynamics friction="0.3" damping="0.3" /> <!-- We add these friction elements to avoid the robotic arm to fall directly due to an umbalance in Gazebo -->
 
 
     </joint>
